@@ -12,6 +12,7 @@ package = {
 
     'root_debs': [
         'net-tools', 'wpasupplicant', 'crda', 'firmware-brcm80211', 'ca-certificates', 'openssl',
+	'wget', 'curl',
     ],
 
     'target': this_dir / 'net.tar.gz',
