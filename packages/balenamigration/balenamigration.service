@@ -1,0 +1,11 @@
+[Unit]
+Description=Balena Migration Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /opt/balenamigration/balenamigration.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -19,17 +19,4 @@ fi
 umount /boot
 rm /dev/mmcblk0p1
 
-mkdir /tmp/ramdisk && mount -t tmpfs -o size=400M tmpramdisk /tmp/ramdisk && cd /tmp/ramdisk
-
-wget 10.0.0.208/balenaos/balena-init-256.mbr.gz && gunzip -c balena-init-256.mbr.gz | sfdisk /dev/mmcblk0 && rm balena-init-256.mbr.gz
-
-wget 10.0.0.208/balenaos/p2-resin-rootA.img.gz && gunzip -c p2-resin-rootA.img.gz | dd of=/dev/mmcblk0p2 status=progress bs=4M && rm p2-resin-rootA.img.gz
-wget 10.0.0.208/balenaos/p3-resin-rootB.img.gz && gunzip -c p3-resin-rootB.img.gz | dd of=/dev/mmcblk0p3 status=progress bs=4M && rm p3-resin-rootB.img.gz
-wget 10.0.0.208/balenaos/p5-resin-state.img.gz && gunzip -c p5-resin-state.img.gz | dd of=/dev/mmcblk0p5 status=progress bs=4M && rm p5-resin-state.img.gz
-wget 10.0.0.208/balenaos/p6-resin-data.img.gz  && gunzip -c p6-resin-data.img.gz  | dd of=/dev/mmcblk0p6 status=progress bs=4M && rm p6-resin-data.img.gz
-wget 10.0.0.208/balenaos/p1-resin-boot.img.gz  && gunzip -c p1-resin-boot.img.gz  | dd of=/dev/mmcblk0p1 status=progress bs=4M && rm p1-resin-boot.img.gz
-
-mkdir /mnt/boot && mount /dev/mmcblk0p1 /mnt/boot/ && wget 10.0.0.208/balenaos/RPi3.config.json && cp RPi3.config.json /mnt/boot/config.json
-
 exec /sbin/init
-exec /sbin/reboot
