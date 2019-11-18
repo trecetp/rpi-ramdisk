@@ -37,14 +37,13 @@ suite=buster
 
 
 # Required debs
-# packages=base-files base-passwd bash coreutils dash debianutils diffutils dpkg
-packages=base-files base-passwd bash coreutils
-# packages=findutils grep gzip init libc-bin login mount sed tar util-linux cpio
-packages=gzip init libc-bin login mount tar util-linux cpio
+packages=base-files base-passwd bash coreutils dash debianutils diffutils dpkg
+packages=findutils grep gzip init libc-bin login mount sed tar util-linux cpio
 # packages=ncurses-base 
 
 # Optional base debs
-# packages=systemd udev kmod gpgv apt
+packages=systemd udev kmod gpgv
+# packages=apt
 # packages=tzdata
 
 # Debs required by /opt packages
