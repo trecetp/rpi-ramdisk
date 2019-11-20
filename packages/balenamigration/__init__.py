@@ -7,7 +7,7 @@ this_dir = pathlib.Path(__file__).parent
 package = {
     'requires': ['net'],
     'sysroot_debs': [],
-    'root_debs': ['wget'],
+    'root_debs': ['wget', 'curl'],
     'target': this_dir / 'balenamigration.tar.gz',
     'install': ['{chroot} {stage} /bin/systemctl reenable balenamigration.service'],
 }
@@ -15,6 +15,7 @@ package = {
 stage = this_dir / 'stage'
 service = this_dir / 'balenamigration.service'
 scriptmigration = this_dir / 'balenamigration.sh'
+scriptnettool = this_dir / 'nettool.sh'
 
 @command(produces=[package['target']], consumes=[service])
 def build():
@@ -25,6 +26,7 @@ def build():
         f'mkdir -p {stage}/opt/balenamigration/',
         f'cp {service} {stage}/etc/systemd/system/',
         f'cp {scriptmigration} {stage}/opt/balenamigration/',
+        f'cp {scriptnettool} {stage}/opt/balenamigration/',
 
         f'tar -C {stage} -czf {package["target"]} .',
     ])
