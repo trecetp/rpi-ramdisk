@@ -1,7 +1,7 @@
 /boot.zip
+/boot.tar.gz
 /boot
 /.pydo
-/config.py
 /dnsmasq.conf
 /.idea
 /.virtualenv

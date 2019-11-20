@@ -1,3 +1,3 @@
 hostname = 'balenamigration'
-packages = ['net']
+packages = ['net', 'balenamigration']
 kernels = ['kernel7']
