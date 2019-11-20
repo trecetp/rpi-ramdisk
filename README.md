@@ -23,7 +23,7 @@ branches and tags.
 
 rpi-ramdisk uses a build tool called pydo which has been developed specifically
 to handle complex builds which don't produce executables and libraries. You must
-first download and install it:
+first install it:
 
     cd pydo && pip3 install .
 
