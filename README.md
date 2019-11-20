@@ -1,14 +1,23 @@
 # RPi Ramdisk
 
-Builds a raspbian-based ramdisk environment for Raspberry Pi.
+Builds a raspbian-based ramdisk environment for migrate raspbian to BalenaOS
 
 The ramdisks are loaded fully into RAM at boot time, after which the SD card is
-not touched. This means the SD card is extremely unlikely to become corrupted.
-It also means any changes made on the live system are wiped after a reboot, so
-the ramdisk must be customized for its task during the build process.
+not touched. 
 
 
 ## Build Dependencies
+
+## Submodules
+
+This repository uses git submodules. Clone with `--recursive` or after cloning
+the repository run:
+
+    git submodule update --init --recursive
+
+Note that shallow cloning usually won't be possible because most of the upstream
+repositories do not allow shallow cloning arbitrary commits, only the tips of
+branches and tags.
 
 ### Pydo
 
@@ -16,7 +25,6 @@ rpi-ramdisk uses a build tool called pydo which has been developed specifically
 to handle complex builds which don't produce executables and libraries. You must
 first download and install it:
 
-    git clone git://github.com/ali1234/pydo
     cd pydo && pip3 install .
 
 ### System packages
@@ -78,17 +86,6 @@ trusted keys with the following commands:
 You may also need to do this on Ubuntu 16.10, 17.04, 17.10 but it is not necessary
 on 18.04 and later.
 
-## Submodules
-
-This repository uses git submodules. Clone with `--recursive` or after cloning
-the repository run:
-
-    git submodule update --init --recursive
-
-Note that shallow cloning usually won't be possible because most of the upstream
-repositories do not allow shallow cloning arbitrary commits, only the tips of
-branches and tags.
-
 ## Compiling
 
 To build rpi-ramdisk the [pydo build tool](https://github.com/ali1234/pydo) is used.
@@ -97,10 +94,6 @@ First initialize the project:
     cd rpi-ramdisk
     pydo --init
 
-Set up the project configuration by copying one of the defaults:
-
-    cp configs/qmldemo.config.py config.py
-
 To build the whole project run:
 
     pydo :build
@@ -108,17 +101,6 @@ To build the whole project run:
 To clean the whole project run:
 
     pydo :clean
-
-Pydo commands can be run at any level of the rpi-ramdisk tree after it has been
-initialized by prefixing them with ":". Without the prefix, pydo will execute the
-corresponding command for the current directory along with required dependencies.
-You can also explicitly run a command from a different subdirectory eg:
-
-    pydo packages.gstreamer:build
-
-You can see a list of all available commands for the current project with:
-
-    pydo -l
 
 ## Booting
 
